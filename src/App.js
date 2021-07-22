@@ -1,30 +1,32 @@
-import Expenses from "./components/Expenses";
-
-function App() {
+import Expenses from "./components/Expenses/Expenses";
+const App = () => {
   const expenses = [
-    { id: "e1", title: "Groceries", amount: 29000, date: new Date() },
     {
-      id: "e2",
-      title: "Steam (ACC + DLCs)",
-      amount: 1800000,
-      date: new Date(2021, 5, 26),
+      id: "e1",
+      title: "Groceries",
+      date: new Date(2021, 6, 21),
+      amount: 29000,
     },
-    { id: "e3", title: "Gym", amount: 1800000, date: new Date(2021, 6, 1) },
+    { id: "e2", title: "Gym", date: new Date(2021, 6, 1), amount: 1800000 },
+    {
+      id: "e3",
+      title: "Steam (ACC+DLCs)",
+      date: new Date(2021, 6, 6),
+      amount: 2000000,
+    },
     {
       id: "e4",
-      title: "Broasted and Tacos",
+      title: "Tacos and Broasted",
+      date: new Date(2021, 5, 29),
       amount: 130000,
-      date: new Date(2021, 5, 1),
-    },
+    }
   ];
+
   return (
     <div>
-      <h2>Let's get started!</h2>
-      <Expenses items={expenses}/>
+      <Expenses expenses={expenses} />
     </div>
-    //This is our desired target state
-    //This is JSX
   );
-}
+};
 
 export default App;
