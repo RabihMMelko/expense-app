@@ -18,11 +18,20 @@ const Expenses = (props) => {
 
   const filteredExpense = (expenses) => {
     return expenses.filter(
-      (expense) => expense.date.getFullYear().toString() === filteredYear
+      (expense) =>
+        expense.date.getFullYear().toString() === filteredYear.toString()
     );
   };
 
   const filteredExpenses = filteredExpense(props.expenses);
+
+  let expensesContent = <p>You don't have any expenses for the year</p>;
+
+  if (filteredExpenses.length > 0) {
+    expensesContent = filteredExpenses
+      .map((expense) => <ExpenseItem key={expense.id} {...expense} />)
+      .sort((el1, el2) => dateSort(el1.props.date, el2.props.date));
+  }
 
   return (
     <div>
@@ -31,9 +40,7 @@ const Expenses = (props) => {
           onChangeFilterYear={changeFilterYearHandler}
           selected={filteredYear}
         />
-        {filteredExpenses
-          .map((expense) => <ExpenseItem key={expense.id} {...expense} />)
-          .sort((el1, el2) => dateSort(el1.props.date, el2.props.date))}
+        {expensesContent}
       </Card>
     </div>
   );
