@@ -1,27 +1,31 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import "./Expenses.css";
 import ExpenseItem from "./ExpenseItem";
 import Card from "../UI/Card";
 import ExpensesFilter from "./ExpensesFilter";
 
 const Expenses = (props) => {
-
   const currentYear = new Date().getFullYear();
   const [filteredYear, setFilteredYear] = useState(currentYear);
-  
+
   const changeFilterYearHandler = (enteredYear) => {
     setFilteredYear(enteredYear);
   };
 
+  const dateSort = (date1, date2) => {
+    return date2 - date1;
+  };
 
   return (
     <div>
       <Card className="expenses">
-        <ExpensesFilter onChangeFilterYear={changeFilterYearHandler}
-         selected = {filteredYear}/>
-        {props.expenses.map((expense) => (
-          <ExpenseItem key={expense.id} {...expense} />
-        ))}
+        <ExpensesFilter
+          onChangeFilterYear={changeFilterYearHandler}
+          selected={filteredYear}
+        />
+        {props.expenses
+          .map((expense) => <ExpenseItem key={expense.id} {...expense} />)
+          .sort((el1, el2) => dateSort(el1.props.date, el2.props.date))}
       </Card>
     </div>
   );
