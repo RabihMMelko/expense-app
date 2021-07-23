@@ -32,7 +32,7 @@ const Expenses = (props) => {
           onChangeFilterYear={changeFilterYearHandler}
           selected={filteredYear}
         />
-        <ExpensesList items={filteredExpenses}/>
+        <ExpensesList items={filteredExpenses} />
       </Card>
     </div>
   );
