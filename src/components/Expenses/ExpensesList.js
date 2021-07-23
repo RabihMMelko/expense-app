@@ -10,7 +10,7 @@ const ExpensesList = (props) => {
   if (props.items.length === 0) {
     return (
       <h2 className="expenses-list__fallback">
-        Chouette! Aucune dépense cette année.
+        Sweet! No expenses this year (yet)
       </h2>
     );
   } else {
