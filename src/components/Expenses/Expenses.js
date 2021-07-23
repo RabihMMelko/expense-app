@@ -11,8 +11,9 @@ const Expenses = (props) => {
 
   return (
     <div>
-      <ExpensesFilter onChangeFilterYear={changeFilterYearHandler} />
+      
       <Card className="expenses">
+        <ExpensesFilter onChangeFilterYear={changeFilterYearHandler} />
         {props.expenses.map((expense) => (
           <ExpenseItem key={expense.id} {...expense} />
         ))}
