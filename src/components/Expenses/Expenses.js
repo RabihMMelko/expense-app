@@ -16,6 +16,14 @@ const Expenses = (props) => {
     return date2 - date1;
   };
 
+  const filteredExpense = (expenses) => {
+    return expenses.filter(
+      (expense) => expense.date.getFullYear() == filteredYear
+    );
+  };
+
+  const filteredExpenses = filteredExpense(props.expenses);
+
   return (
     <div>
       <Card className="expenses">
@@ -23,7 +31,7 @@ const Expenses = (props) => {
           onChangeFilterYear={changeFilterYearHandler}
           selected={filteredYear}
         />
-        {props.expenses
+        {filteredExpenses
           .map((expense) => <ExpenseItem key={expense.id} {...expense} />)
           .sort((el1, el2) => dateSort(el1.props.date, el2.props.date))}
       </Card>
