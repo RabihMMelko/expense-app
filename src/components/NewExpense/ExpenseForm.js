@@ -65,7 +65,7 @@ const ExpenseForm = (props) => {
     //fetching data from state
     const expenseData = {
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount,
       date: new Date(enteredDate),
     };
 
